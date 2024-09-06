@@ -8,7 +8,7 @@ import Home from "./Home/Home";
 import About from "./About/About";
 import Market from "./Marketplace/Pages/Market";
 import MainProfile from "../src/Profile/Pages/MainProfile";
-import MainQuestionBank from "./QuestionBank/Pages/MainQuestionBank";
+import MainQuestionBank from "./QuestionBank/MainQuestionBank";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -84,9 +84,10 @@ const App = () => {
             <Route path="/individual" element={<Addproduct />} />
 
             <Route path="/market" element={<MainQuestionBank />} />
+          
             <Route path="/myprofile" element={<MainProfile />} />
             <Route path="/about" element={<About />} />
-            <Route path="/question" element={<MainQuestionBank />} />
+            <Route path="/question/*" element={<MainQuestionBank />} />
           </Routes>
           <Footer />
         </AuthContext.Provider>

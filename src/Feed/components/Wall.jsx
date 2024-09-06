@@ -5,10 +5,9 @@ import Posts from "./Posts";
 import { useQuery } from "@tanstack/react-query";
 import getPosts from "../Functions/getPosts";
 const Wall = () => {
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isError, isLoading } = useQuery({
     queryKey: ["getposts"],
     queryFn: getPosts,
-    staleTime: 100000,
   });
 
   if (isLoading) {

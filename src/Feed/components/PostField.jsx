@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
+//1
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import post from "../Functions/post";
@@ -19,14 +20,15 @@ const PostField = () => {
     image: null,
   });
 
-  useEffect(() => {}, [state]);
   const imageRef = useRef([]);
   const clickInput = () => {
     imageRef.current.click();
   };
 
   // Posting Fucntion
+  //2
   const queryClient = useQueryClient();
+  //3
   const mutation = useMutation({
     mutationFn: () => {
       post(state.title.value, state.description.value, state.image);
@@ -43,6 +45,7 @@ const PostField = () => {
     console.log("submitted");
     mutation.mutate();
   };
+
   if (mutation.isPending) {
     return <h1>Posting</h1>;
   }
