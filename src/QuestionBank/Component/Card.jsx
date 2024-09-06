@@ -8,6 +8,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Avatar, Modal, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import DownloadForOfflineOutlinedIcon from '@mui/icons-material/DownloadForOfflineOutlined';
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import axios from 'axios';
 import "./Card.css";
 import UpdatePdf from './UpdatePdf';
@@ -34,12 +36,23 @@ function Card(props) {
         setIsAddModalOpen(false);
     };
 
+    const handleModalClose = (event, reason) => {
+        // Prevent closing on backdrop click
+        if (reason !== 'backdropClick') {
+            handleCloseAddModal();
+        }
+    };
+
     const handleDelete = async () => {
         try {
             const token = "Bearer " + JSON.parse(localStorage.getItem("token"));
 
-            const response = await axios.delete(
-                `http://localhost:3000/question/delete/${props.questionID}`,
+            const response = await axios.post(
+                'http://localhost:3000/question/delete',
+                {
+                    pdfPath: props.path,
+                    qID: props.questionID
+                },
                 {
                     headers: {
                         Authorization: token
@@ -95,7 +108,7 @@ function Card(props) {
                                 alt="Profile Image"
                                 src={`http://localhost:3000/${props.userImg}`}
                                 onClick={() => { window.location.href = 'http://localhost:5173/myprofile'; }}
-                                />
+                            />
                         </div>
                     </Item>
                 </Grid>
@@ -114,7 +127,7 @@ function Card(props) {
                 </Grid>
             </Grid>
 
-            <Modal open={isAddModalOpen} onClose={handleCloseAddModal}>
+            <Modal open={isAddModalOpen} onClose={handleModalClose}>
                 <div
                     style={{
                         position: "absolute",
@@ -126,7 +139,29 @@ function Card(props) {
                         borderRadius: "4px",
                     }}
                 >
-                    <UpdatePdf />
+                    <UpdatePdf
+                        courseName={props.name}
+                        courseCode={props.code}
+                        examType={props.type}
+                        trimester={props.trimester}
+                        year={props.year}
+                        department={props.department}
+                        path={props.path}
+                    />
+
+                    <IconButton
+                        onClick={handleCloseAddModal}
+                        sx={{
+                            position: 'absolute',
+                            top: '12px',
+                            right: '10px',
+                            backgroundColor: '#780000',
+                            '&:hover': { background: 'black' }
+                        }}
+                    >
+                        <CloseIcon sx={{ fontSize: 'small', color: '#ffffff' }} />
+                    </IconButton>
+
                 </div>
             </Modal>
 

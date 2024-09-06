@@ -116,7 +116,7 @@ function MainQuestionBank() {
       // Update state with the fetched data
       setQuestion(response.data);
       console.log(response.data);
-      
+
     } catch (error) {
       console.error('Error fetching questions:', error);
     }
@@ -308,8 +308,8 @@ function MainQuestionBank() {
                   id="outlined-basic"
                   label={
                     <Box display="flex" alignItems="center">
-                      <SearchIcon />
-                      <Typography variant="body2" sx={{ marginLeft: 1 }}>
+                      <SearchIcon/>
+                      <Typography variant="body2">
                         Search Question
                       </Typography>
                     </Box>
@@ -318,6 +318,15 @@ function MainQuestionBank() {
                   sx={{ width: "70%" }}
                   onChange={handleSearch}
                 />
+
+                {!question.length && (
+                  <>
+                    <div style={{ marginTop: '10%', }}>
+                      <h1 style={{ margin: 0 }}>No Questions Available</h1>
+                      <img src="design\brain.gif" alt="GIF" height={100} />
+                    </div>
+                  </>
+                )}
 
                 <div className="cardHolder">
                   {question.map((item, index) => (
@@ -328,11 +337,12 @@ function MainQuestionBank() {
                       type={item.exam_type}
                       trimester={item.trimester}
                       year={item.year}
+                      department={item.department}
                       path={item.path}
-                      questionID ={item.id}
-                      owner ={item.uid}
-                      userImg ={item.profile_picture}
-                      fetch ={fetchQuestion}
+                      questionID={item.id}
+                      owner={item.uid}
+                      userImg={item.profile_picture}
+                      fetch={fetchQuestion}
                     />
                   ))}
                 </div>

@@ -3,14 +3,11 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-
 import InsertDriveFileSharpIcon from "@mui/icons-material/InsertDriveFileSharp";
 import TextField from '@mui/material/TextField';
-
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
-
 import Button from "@mui/material/Button";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,7 +22,15 @@ const Item = styled(Paper)(({ theme }) => ({
 const currentYear = new Date().getFullYear();
 
 
-function UpdatePdf() {
+function UpdatePdf(props) {
+
+    const filePath = props.path;
+    const fileName = filePath.split(/[/\\]/).pop(); // Works for both Unix and Windows paths
+    
+    
+
+
+
     return (
         <div>
             <Box component="form" method="POST" sx={{ flexGrow: 1 }}>
@@ -41,27 +46,69 @@ function UpdatePdf() {
                     <Grid item xs={12}>
                         <Item
                             sx={{
-                                height: "10vh",
                                 border: "2px dashed",
-                                margin: "0 5%",
+                                margin: "0 2%",
                                 boxShadow: "none",
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
-                            <h2>Software Engineering</h2>
-                            <p>File size: 1.43 MB</p>
+                            <p style={{ color: 'black' }}><strong>File Name: </strong>{fileName}</p>
+                        </Item>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Item sx={{ boxShadow: "none" }}>
+                            {/* Custom File Input */}
+                            <input
+                                accept="application/pdf"
+                                style={{ display: 'none' }}
+                                id="contained-button-file"
+                                type="file"
+                                name='pdfFile'
+                            />
+                            <label htmlFor="contained-button-file">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    component="span"
+                                    sx={{ width: '50%' }}>
+                                    Upload A PDF
+                                </Button>
+                            </label>
                         </Item>
                     </Grid>
 
                     <Grid item xs={12}>
                         <Item sx={{ boxShadow: "none", marginTop: 1 }}>
-                            <TextField id="outlined-basic" value="Software Engineering" variant="outlined" sx={{ width: "100%" }} />
+                            <TextField
+                                id="outlined-basic"
+                                label="Course Name"
+                                value="Software Engineering"
+                                variant="outlined"
+                                sx={{ width: "100%" }}
+                                name='courseCode'
+                                required
+                            />
                         </Item>
                     </Grid>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={12}>
+                        <Item sx={{ boxShadow: "none" }}>
+                            <TextField
+                                id="outlined-basic"
+                                label="Course Code"
+                                value="CSE 1212"
+                                variant="outlined"
+                                sx={{ width: "100%" }}
+                                name='courseCode'
+                                required
+                            />
+                        </Item>
+                    </Grid>
+
+                    <Grid item xs={6}>
                         <Item sx={{ boxShadow: "none" }}>
                             <Box sx={{ minWidth: 120 }}>
                                 <FormControl fullWidth>
@@ -69,22 +116,57 @@ function UpdatePdf() {
                                         Trimester
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        defaultValue={"Summer"}
                                         inputProps={{
-                                            name: 'age',
+                                            name: 'trimester',
                                             id: 'uncontrolled-native',
                                         }}
                                     >
-                                        <option value={10}>Fall</option>
-                                        <option value={20}>Spring</option>
-                                        <option value={30}>Summer</option>
+                                        <option value={"Fall"}>Fall</option>
+                                        <option value={"Spring"}>Spring</option>
+                                        <option value={"Summer"}>Summer</option>
                                     </NativeSelect>
                                 </FormControl>
                             </Box>
                         </Item>
                     </Grid>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
+                        <Item sx={{ boxShadow: "none" }}>
+                            <Box sx={{ minWidth: 120 }}>
+                                <FormControl fullWidth>
+                                    <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                        Department
+                                    </InputLabel>
+                                    <NativeSelect
+                                        defaultValue={"CE"}
+                                        inputProps={{
+                                            name: 'trimester',
+                                            id: 'uncontrolled-native',
+                                        }}
+                                    >
+                                        <option value={"CSE"}>CSE</option>
+                                        <option value={"EEE"}>EEE</option>
+                                        <option value={"CE"}>CE</option>
+                                        <option value={"BSDS"}>BSDS</option>
+                                        <option value={"MSCSE"}>MSCSE</option>
+                                        <option value={"BBA"}>BBA</option>
+                                        <option value={"BBA in AIS"}>BBA in AIS</option>
+                                        <option value={"MBA"}>MBA</option>
+                                        <option value={"EMBA"}>EMBA</option>
+                                        <option value={"Econoimics"}>Econoimics</option>
+                                        <option value={"MS Econoimics"}>MS Econoimics</option>
+                                        <option value={"BSSEDS"}>BSSEDS</option>
+                                        <option value={"BSSMSJ"}>BSSMSJ</option>
+                                        <option value={"English"}>English</option>
+                                        <option value={"B. Pharm"}>B. Pharm</option>
+                                    </NativeSelect>
+                                </FormControl>
+                            </Box>
+                        </Item>
+                    </Grid>
+
+                    <Grid item xs={6}>
                         <Item sx={{ boxShadow: "none" }}>
                             <Box sx={{ minWidth: 120 }}>
                                 <FormControl fullWidth>
@@ -92,29 +174,29 @@ function UpdatePdf() {
                                         Exam Type
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        defaultValue={"MID"}
                                         inputProps={{
-                                            name: 'age',
+                                            name: 'examType',
                                             id: 'uncontrolled-native',
                                         }}
                                     >
-                                        <option value={10}>Mid</option>
-                                        <option value={20}>Final</option>
+                                        <option value={"MID"}>MID</option>
+                                        <option value={"FINAL"}>FINAL</option>
                                     </NativeSelect>
                                 </FormControl>
                             </Box>
                         </Item>
                     </Grid>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                         <Item sx={{ boxShadow: "none" }}>
                             <Box sx={{ minWidth: 120 }}>
                                 <FormControl fullWidth>
                                     <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                        Exam Type
+                                        Year
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        defaultValue={currentYear}
                                         inputProps={{
                                             name: 'age',
                                             id: 'uncontrolled-native',
@@ -132,7 +214,7 @@ function UpdatePdf() {
 
                     <Grid item xs={12}>
                         <Item sx={{ boxShadow: "none" }}>
-                            <Button variant="contained" sx={{ width: "100%", height: "6vh", marginBottom: "0.7%"}}>
+                            <Button variant="contained" sx={{ width: "100%", height: "6vh", marginBottom: "0.7%" }}>
                                 Update
                             </Button>
                         </Item>
