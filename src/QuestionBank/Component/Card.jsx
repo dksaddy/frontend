@@ -8,51 +8,58 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Avatar, Modal, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import DownloadForOfflineOutlinedIcon from '@mui/icons-material/DownloadForOfflineOutlined';
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 import axios from 'axios';
 import "./Card.css";
 import UpdatePdf from './UpdatePdf';
 import { AuthContext } from "../../Auth/AuthContext";
 
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import DeleteIcon from "@mui/icons-material/Delete";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Avatar, Modal, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import DownloadForOfflineOutlinedIcon from "@mui/icons-material/DownloadForOfflineOutlined";
+
+import "./Card.css";
+import UpdatePdf from "./UpdatePdf";
+
+
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#00000000',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    boxShadow: 'none',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#00000000",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+  boxShadow: "none",
 }));
 
 function Card(props) {
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  
     const auth = useContext(AuthContext);
 
-    const handleOpenAddModal = () => {
-        setIsAddModalOpen(true);
-    };
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+
+  const handleOpenAddModal = () => {
+    setIsAddModalOpen(true);
+  };
 
     const handleCloseAddModal = () => {
         setIsAddModalOpen(false);
-    };
-
-    const handleModalClose = (event, reason) => {
-        // Prevent closing on backdrop click
-        if (reason !== 'backdropClick') {
-            handleCloseAddModal();
-        }
     };
 
     const handleDelete = async () => {
         try {
             const token = "Bearer " + JSON.parse(localStorage.getItem("token"));
 
-            const response = await axios.post(
-                'http://localhost:3000/question/delete',
-                {
-                    pdfPath: props.path,
-                    qID: props.questionID
-                },
+            const response = await axios.delete(
+                `http://localhost:3000/question/delete/${props.questionID}`,
                 {
                     headers: {
                         Authorization: token
@@ -108,7 +115,7 @@ function Card(props) {
                                 alt="Profile Image"
                                 src={`http://localhost:3000/${props.userImg}`}
                                 onClick={() => { window.location.href = 'http://localhost:5173/myprofile'; }}
-                            />
+                                />
                         </div>
                     </Item>
                 </Grid>
@@ -127,7 +134,7 @@ function Card(props) {
                 </Grid>
             </Grid>
 
-            <Modal open={isAddModalOpen} onClose={handleModalClose}>
+            <Modal open={isAddModalOpen} onClose={handleCloseAddModal}>
                 <div
                     style={{
                         position: "absolute",
@@ -139,29 +146,7 @@ function Card(props) {
                         borderRadius: "4px",
                     }}
                 >
-                    <UpdatePdf
-                        courseName={props.name}
-                        courseCode={props.code}
-                        examType={props.type}
-                        trimester={props.trimester}
-                        year={props.year}
-                        department={props.department}
-                        path={props.path}
-                    />
-
-                    <IconButton
-                        onClick={handleCloseAddModal}
-                        sx={{
-                            position: 'absolute',
-                            top: '12px',
-                            right: '10px',
-                            backgroundColor: '#780000',
-                            '&:hover': { background: 'black' }
-                        }}
-                    >
-                        <CloseIcon sx={{ fontSize: 'small', color: '#ffffff' }} />
-                    </IconButton>
-
+                    <UpdatePdf />
                 </div>
             </Modal>
 

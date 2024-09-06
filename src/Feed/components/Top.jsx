@@ -1,39 +1,26 @@
 import React from "react";
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-import "./Top.css";
+import NameAvatar from "../../Shared/NameAvatar";
 
 const Top = () => {
   return (
     <Box
-      component="form"
-      padding={1.5}
-      sx={{
-        backgroundColor: "#FFFFFF",
-
-        borderRadius: "4px",
-      }}
+      padding={6}
+      marginTop={2}
+      marginBottom={2}
+      borderRadius={2}
+      border="2px solid #EBEBEB"
     >
-      <Typography variant="h6">Top Contributer</Typography>
+      <Typography gutterBottom variant="h5" textTransform="uppercase">
+        Top Contributers
+      </Typography>
       <hr />
-      <Box display="flex" alignItems="center" marginBottom={2}>
-        <Avatar src="/profileImage.webp" />
-        <Box marginLeft={1}>
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-            Mohiuddin Sadik
-          </Typography>
-          <Typography variant="caption">320+ votes</Typography>
-        </Box>
-      </Box>
-      <Box display="flex" alignItems="center">
-        <Avatar src="/profileImage.webp" />
-        <Box marginLeft={1}>
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-            MD Nadib Ahsan
-          </Typography>
-          <Typography variant="caption">320+ votes</Typography>
-        </Box>
-      </Box>
+      <NameAvatar subtitle="320 Votes" />
+
+      <NameAvatar subtitle="320 Votes " />
+      <NameAvatar subtitle="320 Votes " />
+      <NameAvatar subtitle="320 Votes" />
     </Box>
   );
 };
