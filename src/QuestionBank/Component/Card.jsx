@@ -5,76 +5,41 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Avatar, Modal, Typography } from '@mui/material';
+import { Avatar, Modal, } from '@mui/material';
 import Button from '@mui/material/Button';
 import DownloadForOfflineOutlinedIcon from '@mui/icons-material/DownloadForOfflineOutlined';
-import axios from 'axios';
-import "./Card.css";
-import UpdatePdf from './UpdatePdf';
+
 import { AuthContext } from "../../Auth/AuthContext";
-
-import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import DeleteIcon from "@mui/icons-material/Delete";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Avatar, Modal, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import DownloadForOfflineOutlinedIcon from "@mui/icons-material/DownloadForOfflineOutlined";
-
-import "./Card.css";
-import UpdatePdf from "./UpdatePdf";
-
+import './Card.css'
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#00000000",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  boxShadow: "none",
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#00000000",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    boxShadow: "none",
 }));
 
 function Card(props) {
 
-  
+
     const auth = useContext(AuthContext);
 
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 
-  const handleOpenAddModal = () => {
-    setIsAddModalOpen(true);
-  };
+    const handleOpenAddModal = () => {
+        setIsAddModalOpen(true);
+    };
 
     const handleCloseAddModal = () => {
         setIsAddModalOpen(false);
     };
 
     const handleDelete = async () => {
-        try {
-            const token = "Bearer " + JSON.parse(localStorage.getItem("token"));
-
-            const response = await axios.delete(
-                `http://localhost:3000/question/delete/${props.questionID}`,
-                {
-                    headers: {
-                        Authorization: token
-                    }
-                }
-            );
-            console.log(response.data);
-            props.fetch();
-        } catch (error) {
-            console.error('Error fetching questions:', error);
-        }
-
+        alert(props.path)
     };
-
-
 
 
     return (
@@ -82,8 +47,8 @@ function Card(props) {
             sx={{
                 flexGrow: 1,
                 borderRadius: "10px",
-                width: "75%",
-                margin: "2% 12.5%",
+                width: "70%",
+                margin: "2% 15%",
                 boxShadow: "rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px",
                 transition: "0.5s linear",
                 '&:hover': {
@@ -92,7 +57,7 @@ function Card(props) {
                 },
             }}
         >
-            <Grid container spacing={1}>
+            <Grid container >
                 <Grid item xs={8}>
                     <Item>
                         <h2>{props.name}</h2>
@@ -115,7 +80,7 @@ function Card(props) {
                                 alt="Profile Image"
                                 src={`http://localhost:3000/${props.userImg}`}
                                 onClick={() => { window.location.href = 'http://localhost:5173/myprofile'; }}
-                                />
+                            />
                         </div>
                     </Item>
                 </Grid>
@@ -125,10 +90,13 @@ function Card(props) {
                         <div className='downloadBtn'>
                             <Button
                                 variant="contained"
-                                onClick={() => window.open(`http://localhost:3000/${props.path}`, "_blank")}
                             >
                                 <DownloadForOfflineOutlinedIcon sx={{ marginRight: 1 }} /> Download PDF
                             </Button>
+
+
+
+
                         </div>
                     </Item>
                 </Grid>
@@ -146,7 +114,7 @@ function Card(props) {
                         borderRadius: "4px",
                     }}
                 >
-                    <UpdatePdf />
+
                 </div>
             </Modal>
 
