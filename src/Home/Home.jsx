@@ -1,307 +1,221 @@
 import React from "react";
-import { Box, Typography, Button, Grid, Container } from "@mui/material";
-import HubIcon from "@mui/icons-material/Hub";
-import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
+import { Box, Typography, Button, Container, Grid } from "@mui/material";
+import SchoolIcon from "@mui/icons-material/School";
+import PeopleIcon from "@mui/icons-material/People";
+import ForumIcon from "@mui/icons-material/Forum";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-import "./Home.css";
+import WorkIcon from "@mui/icons-material/Work";
 import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <Box position="relative" top={-82} zIndex={-2}>
-      <Box position="relative">
-        <img
-          src="./design/UIU.jpg"
-          style={{
-            height: "102vh",
-            width: "100%",
-            position: "absolute",
-            top: "0px",
-            zIndex: "0",
-          }}
-          alt=""
-        />
-        <Box
-          sx={{
-            height: "102vh",
-            width: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.692)",
-            zIndex: 1,
-          }}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Typography
-            variant="h4"
-            sx={{ color: "white !important", fontStyle: "italic" }}
-          >
-            Welcome to our Website
-          </Typography>
-          <Typography variant="h1" sx={{ color: "white !important" }}>
-            Solution Provider
-          </Typography>
-          <br />
-          <br />
-
-          <Button
-            component={Link}
-            to="./signup"
-            variant="contained"
-            sx={{ height: "60px", width: "200px", zIndex: 2 }}
-          >
-            Get Started
-          </Button>
-        </Box>
-        <Box>
-          <br />
-          <br />
-          <Typography variant="h2" textAlign="center">
-            OUR SERVICES
-          </Typography>
-          <Typography variant="subtitle1" color="secondary" textAlign="center">
-            Expert Solutions Tailored for You
-          </Typography>
-
-          <Container
-            sx={{ marginTop: "50px", marginBottom: "50px" }}
-            maxWidth="xl"
-          >
-            <Box
-              display="flex"
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="center"
-              gap={20}
-            >
-              <Box className="services">
-                <HubIcon
-                  sx={{ height: "100px", width: "100px" }}
-                  color="primary"
-                />
-                <br />
-                <Typography variant="h4" color="secondary" textAlign="center">
-                  Comunication
-                </Typography>
-                <br />
-                <Typography
-                  variant="subtitle1"
-                  color="secondary"
-                  textAlign="justify"
-                >
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  dolor fugit iusto, ratione harum dolorum dignissimos totam!
-                  Consequuntur, nisi dolorem! Lorem ipsum, dolor sit amet
-                  consectetur adipisicing elit. Magnam ea veniam itaque nostrum
-                  aut magni quam, tempore dolore hic saepe.
-                </Typography>
-                <br />
-                <br />
-                <Button
-                  variant="contained"
-                  sx={{ height: "60px", width: "200px" }}
-                >
-                  VIEW
-                </Button>
-              </Box>
-              <Box className="services">
-                <ContentPasteSearchIcon
-                  sx={{ height: "100px", width: "100px" }}
-                  color="primary"
-                />
-                <br />
-                <Typography variant="h4" color="secondary" textAlign="center">
-                  Student Portal
-                </Typography>
-                <br />
-                <Typography
-                  variant="subtitle1"
-                  color="secondary"
-                  textAlign="justify"
-                >
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  dolor fugit iusto, ratione harum dolorum dignissimos totam!
-                  Consequuntur, nisi dolorem! Lorem ipsum, dolor sit amet
-                  consectetur adipisicing elit. Magnam ea veniam itaque nostrum
-                  aut magni quam, tempore dolore hic saepe.
-                </Typography>
-                <br />
-                <br />
-                <Button
-                  variant="contained"
-                  sx={{ height: "60px", width: "200px" }}
-                >
-                  VIEW
-                </Button>
-              </Box>
-              <Box className="services">
-                <StorefrontIcon
-                  sx={{ height: "100px", width: "100px" }}
-                  color="primary"
-                />
-                <br />
-                <Typography variant="h4" color="secondary" textAlign="center">
-                  Market Place
-                </Typography>
-                <br />
-                <Typography
-                  variant="subtitle1"
-                  color="secondary"
-                  textAlign="justify"
-                >
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  dolor fugit iusto, ratione harum dolorum dignissimos totam!
-                  Consequuntur, nisi dolorem! Lorem ipsum, dolor sit amet
-                  consectetur adipisicing elit. Magnam ea veniam itaque nostrum
-                  aut magni quam, tempore dolore hic saepe.
-                </Typography>
-                <br />
-                <br />
-                <Button
-                  variant="contained"
-                  sx={{ height: "60px", width: "200px" }}
-                >
-                  VIEW
-                </Button>
-              </Box>
-            </Box>
-          </Container>
-          <Box
-            component="div"
-            marginTop={10}
-            sx={{
-              backgroundColor: "#011627 !important",
-              height: "600px",
+    <Box>
+      {/* Background section */}
+      <Box position="relative" top={-82} zIndex={-2}>
+        <Box position="relative">
+          <img
+            src="./design/UIU.jpg"
+            style={{
+              height: "102vh",
               width: "100%",
-              paddingTop: "200px",
+              position: "absolute",
+              top: "0px",
+              zIndex: "-1",
             }}
-          >
-            <Container maxWidth="xl">
-              <br />
-              <br />
-              <Typography
-                variant="h3"
-                sx={{ color: "white !important" }}
-                textAlign="center"
-              >
-                We will help you to grow
-              </Typography>
-              <br />
-              <br />
-              <br />
-              <br />
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                flex="row"
-                gap={15}
-              >
-                <Box>
-                  <Typography
-                    variant="h1"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    1000+
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    Students
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography
-                    variant="h1"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    2000+
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    Resources
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography
-                    variant="h1"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    990+
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    sx={{ color: "white !important" }}
-                    textAlign="center"
-                  >
-                    Alumni
-                  </Typography>
-                </Box>
-              </Box>
-            </Container>
-          </Box>
-
+            alt="University Campus"
+          />
           <Box
             sx={{
-              backgroundColor: "#EDF2F4 !important",
-              height: "700px",
+              height: "102vh",
               width: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              zIndex: 1,
             }}
             display="flex"
             alignItems="center"
             justifyContent="center"
+            flexDirection="column"
           >
-            <Box display="flex" alignItems="center" gap={0}>
-              <img
-                src="./profileImage.webp"
-                style={{ height: "500px", width: "600px" }}
-                alt=""
-              />
-              <div
-                style={{
-                  height: "350px",
-                  width: "10px",
-                  backgroundColor: "#780000",
-                }}
-              ></div>
-              <Box
-                sx={{
-                  height: "500px",
-                  width: "600px",
-                  backgroundColor: "#EDF2F4",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <Typography variant="h3" color="primary">
-                  OUR GOAL
-                </Typography>
-                <Typography variant="subtitle1" padding={8} textAlign="justify">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Placeat vel asperiores reprehenderit incidunt! Ut dolorem
-                  nobis necessitatibus, dolore enim recusandae. Lorem ipsum
-                  dolor sit amet consectetur, adipisicing elit. Adipisci
-                  explicabo deserunt voluptatum illo provident tempora
-                  perspiciatis eaque dignissimos. Quia nisi facilis, temporibus
-                  possimus consequatur cumque ea eum officiis eos. Quae et
-                  deleniti nihil perspiciatis amet odit qui cumque dolores
-                  fugit.
-                </Typography>
-              </Box>
-            </Box>
+            <Typography variant="h4" sx={{ color: "white !important" }}>
+              Welcome to Student & Alumni Connect
+            </Typography>
+            <Typography variant="h1" sx={{ color: "white !important", textAlign: 'center' }}>
+              Empowering Future & Past Generations
+            </Typography>
+            <br />
+            <br />
+            <Button
+              component={Link}
+              to="/signup"
+              variant="contained"
+              sx={{ height: "60px", width: "200px", zIndex: 2 }}
+            >
+              Join Now
+            </Button>
           </Box>
         </Box>
+      </Box>
+
+      {/* Services section */}
+      <Box>
+        <Typography variant="h2" textAlign="center">
+          CONNECT, LEARN, GROW
+        </Typography>
+        <Typography variant="subtitle1" color="secondary" textAlign="center">
+          Bridging the Gap Between Students and Alumni
+        </Typography>
+
+        <Container sx={{ marginTop: "50px" }} maxWidth="lg">
+          <Grid container spacing={6}>
+            {/* Service 1: Student Network */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <PeopleIcon sx={{ fontSize: "80px", color: "primary.main" }} />
+                <Typography variant="h4" color="primary">
+                  Student Network
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Connect with peers, join study groups, and collaborate on
+                  projects. The platform allows you to network with like-minded
+                  individuals for academic growth and professional development.
+                </Typography>
+              </Box>
+            </Grid>
+            {/* Service 2: Alumni Mentorship */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <SchoolIcon sx={{ fontSize: "80px", color: "primary.main" }} />
+                <Typography variant="h4" color="primary">
+                  Alumni Mentorship
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Get guidance from successful alumni who have walked the same
+                  path. Seek career advice, participate in webinars, or engage
+                  in one-on-one mentorship programs to unlock opportunities.
+                </Typography>
+              </Box>
+            </Grid>
+            {/* Service 3: Question Bank */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <ForumIcon sx={{ fontSize: "80px", color: "primary.main" }} />
+                <Typography variant="h4" color="primary">
+                  Question Bank
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Share and access previous exam questions. This repository helps
+                  students prepare for exams by giving them access to a range of
+                  past papers.
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Service 4: ToLet Section */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <HomeWorkIcon sx={{ fontSize: "80px", color: "primary.main" }} />
+                <Typography variant="h4" color="primary">
+                  ToLet for Students
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Looking for a bachelor flat, a shared room, or a seat? The
+                  ToLet section helps students find accommodations easily,
+                  facilitating their housing needs.
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Service 5: Marketplace */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <StorefrontIcon
+                  sx={{ fontSize: "80px", color: "primary.main" }}
+                />
+                <Typography variant="h4" color="primary">
+                  Marketplace
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Buy and sell common goods or lab equipment. The marketplace
+                  provides a space for students to trade, ensuring their
+                  academic and daily needs are met.
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Service 6: Job Portal */}
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <WorkIcon sx={{ fontSize: "80px", color: "primary.main" }} />
+                <Typography variant="h4" color="primary">
+                  Job Portal
+                </Typography>
+                <Typography variant="subtitle1" textAlign="justify">
+                  Alumni assist students by sharing job opportunities and
+                  providing career advice. Students can explore internships and
+                  job openings to start their professional journey.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Statistics section */}
+      <Box marginY={5}
+        sx={{
+          backgroundColor: "",
+          color: "white",
+          padding: "50px 0",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography variant="h3" textAlign="center" marginBottom={5}>
+            Join Our Ever-Growing Community
+          </Typography>
+          <Grid container spacing={5} justifyContent="center">
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <Typography variant="h1">5,000+</Typography>
+                <Typography variant="h5">Students</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <Typography variant="h1">1,000+</Typography>
+                <Typography variant="h5">Alumni Mentors</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box textAlign="center">
+                <Typography variant="h1">500+</Typography>
+                <Typography variant="h5">Career Opportunities</Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Testimonial or Goal section */}
+      <Box 
+        sx={{
+          backgroundColor: "",
+          paddingY: "50px",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography variant="h3" color="primary" textAlign="center">
+            Our Goal
+          </Typography>
+          <Typography variant="subtitle1" textAlign="justify" marginTop={4}>
+            Our platform is designed to bridge the gap between students and
+            alumni, fostering a community where both groups can connect, share
+            knowledge, and grow together. By providing mentorship opportunities,
+            collaborative projects, career resources, housing options, and more,
+            we aim to empower the next generation of leaders.
+          </Typography>
+        </Container>
       </Box>
     </Box>
   );
